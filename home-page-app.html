@@ -1,0 +1,88 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`ing-uic-my-app`
+Sample application
+
+Example:
+
+<ing-uic-my-app>
+</ing-uic-my-app>
+
+Please follow the [guide](https://www.polymer-project.org/1.0/docs/tools/documentation) when writing the documentation.
+
+@demo demo/index.html
+@demo demo/configurator.html Configure the ing-uic-my-app
+@author Muralidharan <Muralidharan.Srinivasan@ing.be>
+-->
+
+<dom-module id="ing-uic-my-app">
+    <template>
+        <style>
+            :host {
+                display: block;
+                box-sizing: border-box;
+            }
+        </style>
+
+        <h2>Hello [[prop1]]</h2>
+        
+    </template>
+
+    <script>
+        
+        Polymer({
+
+            is: 'ing-uic-my-app',
+                
+            properties: {
+                /**
+                 * The first property in ing-uic-my-app
+                 */
+                prop1: {
+                    type: String,
+                    value: 'value1'
+                }
+            },
+            /**
+             * Lifecycle callbacks.
+             */
+            created: function() {
+                // Called when the element has been created, but before property values are set and
+                // local DOM is initialized. Use for one-time set-up before property values are set.
+                console.log('#' + this.id + ' was created');
+                return true;
+            },
+            ready: function () {
+                // Called after property values are set and local DOM is initialized.
+                // Use for one-time configuration of your component after local DOM is initialized.
+                // (For configuration based on property values, it may be preferable to use an observer.)
+                console.log('#' + this.id + ' has local DOM initialized');
+                return true;
+            },
+            attached: function () {
+                // Called after the element is attached to the document. Can be called multiple times during
+                // the lifetime of an element. The first `attached` callback is guaranteed not to fire
+                // until after `ready`. Uses include accessing computed style information, and adding
+                // document-level event listeners. (If you use declarative event handling, such as annotated
+                // event listeners or the listeners object, Polymer automatically adds listeners on attach and
+                // removes them on detach.)
+                console.log('#' + this.id + ' was attached');
+                return true;
+            },
+            detached: function () {
+                // Called after the element is detached from the document. Can be called multiple times
+                // during the lifetime of an element. Uses include removing event listeners added in attached.
+                console.log('#' + this.id + ' was detached');
+                return true;
+            },
+            attributeChanged: function(name, type) {
+                // Called when one of the element's attributes is changed. Use to handle attribute changes
+                // that don't correspond to declared properties. (For declared properties, Polymer handles
+                // attribute changes automatically as described in attribute deserialization.)
+                console.log('#' + this.id + ' attribute ' + name + ' was changed to ' + this.getAttribute(name));
+                return true;
+            }
+        });
+    </script>
+</dom-module>
